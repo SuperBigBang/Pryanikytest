@@ -1,0 +1,37 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/cornerColorDarkBlueTheme</item>
+        <item name="colorAccent">@color/colorPrimartWhiteDarkBlueTheme</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark_state_darkBlue_blue</item>
+        <item name="android:alertDialogTheme">@style/Theme.AppCompat.NoActionBar</item>
+        <item name="backGroundColor">@color/colorPrimaryDarkBlueBackground</item>
+        <item name="selectedTextColor">@color/colorPrimartWhiteDarkBlueTheme</item>
+        <item name="UNselectedTextColor">@color/cornerColorDarkBlueTheme</item>
+        <item name="OtherTextColor">@color/colorPrimartWhiteDarkBlueTheme</item>
+        <item name="seekBarDotColor">@color/cornerColorDarkBlueTheme</item>
+        <item name="seekBarProgressColor">@color/cornerColorDarkBlueTheme</item>
+        <item name="seekBarBackgroundProgressColor">@color/colorPrimartWhiteDarkBlueTheme</item>
+        <item name="lines_color">@color/cornerColorDarkBlueTheme</item>
+        <item name="BuyOkButton">@color/BuyOkButtonDark</item>
+        <item name="UnavailableObj">@color/md_grey_500</item>
+    </style>
+    <style name="SplashTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowBackground">@drawable/background_splash</item>
+    </style>
+
+    <attr name="backGroundColor" format="reference|color" />
+    <attr name="selectedTextColor" format="reference|color" />
+    <attr name="UNselectedTextColor" format="reference|color" />
+    <attr name="OtherTextColor" format="reference|color" />
+    <attr name="seekBarDotColor" format="reference|color" />
+    <attr name="seekBarProgressColor" format="reference|color" />
+    <attr name="seekBarBackgroundProgressColor" format="reference|color" />
+    <attr name="lines_color" format="reference|color" />
+    <attr name="BuyOkButton" format="reference|color" />
+    <attr name="UnavailableObj" format="reference|color" />
+</resources>
