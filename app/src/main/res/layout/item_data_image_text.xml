@@ -11,11 +11,10 @@
         android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?backGroundColor"
+        android:background="@color/colorPrimaryDarkBlueBackground"
         android:gravity="center"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/divider1"
-        app:layout_constraintTop_toTopOf="@+id/divider1">
+        >
 
         <TextView
             android:id="@+id/selector"
@@ -30,7 +29,7 @@
             android:paddingStart="@dimen/dp_4"
             android:paddingEnd="@dimen/dp_4"
             android:textAlignment="center"
-            android:textColor="@color/colorSelectedTextColor"
+            android:textColor="@color/colorPrimartWhiteDarkBlueTheme"
             android:textSize="18sp"
             android:textStyle="normal"
             app:layout_constraintEnd_toEndOf="parent"
@@ -63,7 +62,7 @@
             android:paddingEnd="@dimen/dp_4"
             android:text=""
             android:textAlignment="center"
-            android:textColor="?OtherTextColor"
+            android:textColor="@color/colorPrimartWhiteDarkBlueTheme"
             android:textSize="18sp"
             android:textStyle="normal"
             android:visibility="visible"
