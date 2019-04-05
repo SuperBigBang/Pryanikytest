@@ -4,7 +4,7 @@ import android.support.annotation.Nullable;
 
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.chad.library.adapter.base.MultipleItemRvAdapter;
-import com.superbigbang.pryanikytest.adapter.provider.SongsListItemProvider;
+import com.superbigbang.pryanikytest.adapter.provider.ListItemProvider;
 import com.superbigbang.pryanikytest.model.Item;
 
 import java.util.List;
@@ -25,7 +25,7 @@ public class ListItemRvAdapter extends MultipleItemRvAdapter<Item, BaseViewHolde
 
     @Override
     public void registerItemProvider() {
-        mProviderDelegate.registerProvider(new SongsListItemProvider());
+        mProviderDelegate.registerProvider(new ListItemProvider());
     }
 
 }

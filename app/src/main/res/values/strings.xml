@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Pryaniky.test</string>
     <string name="divider">divider</string>
+    <string name="imagedata">image Data</string>
 </resources>

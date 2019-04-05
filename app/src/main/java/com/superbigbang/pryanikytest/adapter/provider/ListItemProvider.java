@@ -5,7 +5,7 @@ import com.chad.library.adapter.base.provider.BaseItemProvider;
 import com.superbigbang.pryanikytest.R;
 import com.superbigbang.pryanikytest.model.Item;
 
-public class SongsListItemProvider extends BaseItemProvider<Item, BaseViewHolder> {
+public class ListItemProvider extends BaseItemProvider<Item, BaseViewHolder> {
 
     @Override
     public int viewType() {
@@ -14,7 +14,7 @@ public class SongsListItemProvider extends BaseItemProvider<Item, BaseViewHolder
 
     @Override
     public int layout() {
-        return R.layout.item_list;
+        return R.layout.item_data_text;
     }
 
     @Override
