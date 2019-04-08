@@ -1,6 +1,5 @@
-package com.superbigbang.pryanikytest.adapter.provider;
+package com.superbigbang.pryanikytest.di.modules;
 
-import com.superbigbang.pryanikytest.di.modules.ApiModule;
 import com.superbigbang.pryanikytest.model.PryanikyTestApi;
 import com.superbigbang.pryanikytest.model.PryanikyTestService;
 

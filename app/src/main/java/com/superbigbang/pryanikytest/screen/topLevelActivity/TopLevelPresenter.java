@@ -1,18 +1,18 @@
 package com.superbigbang.pryanikytest.screen.topLevelActivity;
 
 import com.arellomobile.mvp.InjectViewState;
-import com.arellomobile.mvp.MvpPresenter;
-import com.squareup.moshi.Json;
-import com.squareup.moshi.JsonAdapter;
-import com.squareup.moshi.Moshi;
 import com.superbigbang.pryanikytest.ExtendApplication;
-import com.superbigbang.pryanikytest.R;
 import com.superbigbang.pryanikytest.adapter.ListItemRvAdapter;
+import com.superbigbang.pryanikytest.entity.EntityDataImageText;
+import com.superbigbang.pryanikytest.entity.EntityDataText;
+import com.superbigbang.pryanikytest.entity.EntitySelector;
+import com.superbigbang.pryanikytest.entity.ItemsForRecyclerView;
+import com.superbigbang.pryanikytest.model.Data;
 import com.superbigbang.pryanikytest.model.PryanikyTestService;
-import com.superbigbang.pryanikytest.model.Response;
 import com.superbigbang.pryanikytest.screen.BasePresenter;
 
-import org.json.JSONObject;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -23,34 +23,64 @@ import timber.log.Timber;
 
 @InjectViewState
 public class TopLevelPresenter extends BasePresenter<TopLevelView> {
-
     @Inject
     PryanikyTestService mPryanikyTestService;
+
+    public TopLevelPresenter() {
+        ExtendApplication.getBaseComponent().inject(this);
+    }
 
     @Override
     protected void onFirstViewAttach() {
         super.onFirstViewAttach();
     }
 
-public TopLevelPresenter(){
-    ExtendApplication.getBaseComponent().inject(this);}
-
     void showList() {
-        //Local testing
-               Disposable disposable = mPryanikyTestService.getJSONFile()
+
+        Disposable disposable = mPryanikyTestService.getJSONFile()
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(json -> {
                     Timber.e("Success");
-                    for (int i = 0; i <json.getData().size() ; i++) {
-                       Timber.e(json.getData().get(i).getName()); /**Continue work from this place*/
+                    List<ItemsForRecyclerView> itemsForRecyclerViews = new ArrayList<>();
+                    for (int i = 0; i < json.getView().size(); i++) {
+                        for (int j = 0; j < json.getData().size(); j++) {
+                            if (json.getView().get(i).equals(json.getData().get(j).getName())) {
+                                Data data = json.getData().get(j);
+                                if (data.getData().getUrl()!=null) {
+                                    itemsForRecyclerViews.add(new EntityDataImageText(
+                                            ItemsForRecyclerView.ITEM_DATA_IMAGE_TEXT,
+                                            data.getName(),
+                                            data.getData().getText(),
+                                            data.getData().getUrl()));
+                                } else if (data.getData().getSelectedId()!=null) {
+                                    Timber.e(data.getName());
+                                    Timber.e(String.valueOf(data.getData().getSelectedId()));
+                                    Timber.e((String.valueOf(data.getData().getVariants().size())));
+                                    itemsForRecyclerViews.add(new EntitySelector(
+                                            ItemsForRecyclerView.ITEM_DATA_SELECTOR_LIST,
+                                            data.getName(),
+                                            data.getData().getSelectedId(),
+                                            data.getData().getVariants()
+                                    ));
+                                } else {
+                                    itemsForRecyclerViews.add(new EntityDataText(
+                                            ItemsForRecyclerView.ITEM_DATA_TEXT,
+                                            data.getName(),
+                                            data.getData().getText()
+                                    ));
+                                }
+                                break;
+                            }
+                            Timber.e("count");
+                        }
                     }
+                    ListItemRvAdapter listItemRvAdapter = new ListItemRvAdapter(itemsForRecyclerViews);
+                    getViewState().showList(listItemRvAdapter);
                 }, exception -> {
                     Timber.e("Exception%s", exception.getMessage());
                 });
 
         unsubscribeOnDestroy(disposable);
-
-    //    ListItemRvAdapter listItemRvAdapter = new ListItemRvAdapter()
     }
 
     public void clearStateStrategyPull() {

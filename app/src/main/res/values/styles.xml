@@ -24,6 +24,15 @@
         <item name="android:windowBackground">@drawable/background_splash</item>
     </style>
 
+    <style name="MySwitch" parent="Theme.AppCompat.Light">
+        <item name="trackTint" >@color/cardview_light_background
+        </item>
+        <!-- Неактивное состояние -->
+        <item name="colorSwitchThumbNormal">@color/uncheckColor</item>
+        <!-- Активное состояние -->
+        <item name="colorControlActivated">@color/cornerColorDarkBlueTheme</item>
+    </style>
+
     <attr name="backGroundColor" format="reference|color" />
     <attr name="selectedTextColor" format="reference|color" />
     <attr name="UNselectedTextColor" format="reference|color" />

@@ -7,9 +7,9 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class InSightData{
-   private String text;
-   private String url;
- private int selectedId;
- private List<Variants> variants;
+public class InSightData {
+    private String text;
+    private String url;
+    private Integer selectedId;
+    private List<Variants> variants;
 }

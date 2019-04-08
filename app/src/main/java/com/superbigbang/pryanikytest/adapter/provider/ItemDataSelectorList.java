@@ -1,21 +1,16 @@
 package com.superbigbang.pryanikytest.adapter.provider;
 
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Spinner;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.widget.Toast;
 
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.chad.library.adapter.base.provider.BaseItemProvider;
 import com.superbigbang.pryanikytest.R;
 import com.superbigbang.pryanikytest.adapter.ListItemRvAdapter;
+import com.superbigbang.pryanikytest.adapter.NestAdapter;
 import com.superbigbang.pryanikytest.entity.EntitySelector;
 import com.superbigbang.pryanikytest.entity.ItemsForRecyclerView;
-
-import java.util.Iterator;
-
-import timber.log.Timber;
 
 /**
  * https://github.com/chaychan
@@ -34,39 +29,22 @@ public class ItemDataSelectorList extends BaseItemProvider<ItemsForRecyclerView,
 
     @Override
     public int layout() {
-        return R.layout.item_data_selector_list;
+        return R.layout.item_nest_click;
     }
 
     @Override
     public void convert(BaseViewHolder helper, ItemsForRecyclerView data, int position) {
-        // адаптер
-        for (Object o : helper.getNestViews()) {
-            Timber.e("Object from iterator: %s", o.getClass());
-        }
+        helper.setNestView(R.id.item_click); // u can set nestview id
+        helper.setText(R.id.name5, data.name);
+        final RecyclerView recyclerView = helper.getView(R.id.nest_list);
+        recyclerView.setLayoutManager(new LinearLayoutManager(helper.itemView.getContext(), LinearLayoutManager.VERTICAL, false));
+        recyclerView.setHasFixedSize(true);
 
-     /*   int resource
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(mContext, , ((EntitySelector)data).variants);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        NestAdapter nestAdapter = new NestAdapter(((EntitySelector)data).variants,((EntitySelector) data).selectedId);
+        // nestAdapter.setOnItemClickListener(this);
+        //nestAdapter.setOnItemChildClickListener(this);
+        recyclerView.setAdapter(nestAdapter);
 
-        Spinner spinner = (Spinner) findViewById(R.id.selector);
-        spinner.setAdapter(adapter);
-        // заголовок
-        spinner.setPrompt("Title");
-        // выделяем элемент
-        spinner.setSelection(2);
-        // устанавливаем обработчик нажатия
-        //spinner.setOnItemSelectedListener(new OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view,
-                                       int position, long id) {
-                // показываем позиция нажатого элемента
-                Toast.makeText(getBaseContext(), "Position = " + position, Toast.LENGTH_SHORT).show();
-            }
-            @Override
-            public void onNothingSelected(AdapterView<?> arg0) {
-            }
-        });
-    }*/
     }
 
     @Override

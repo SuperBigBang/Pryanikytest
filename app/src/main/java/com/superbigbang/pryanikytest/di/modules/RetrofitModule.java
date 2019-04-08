@@ -2,10 +2,7 @@ package com.superbigbang.pryanikytest.di.modules;
 
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.FieldNamingStrategy;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.squareup.moshi.Moshi;
-import com.squareup.moshi.Moshi.Builder;
 import com.superbigbang.pryanikytest.BuildConfig;
 
 import java.lang.reflect.Field;
@@ -20,7 +17,6 @@ import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Converter;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
-import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.converter.moshi.MoshiConverterFactory;
 
 @Module

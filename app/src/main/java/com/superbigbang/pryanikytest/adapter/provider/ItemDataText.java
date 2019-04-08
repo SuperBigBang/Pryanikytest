@@ -32,6 +32,7 @@ public class ItemDataText extends BaseItemProvider<ItemsForRecyclerView, BaseVie
     @Override
     public void convert(BaseViewHolder helper, ItemsForRecyclerView data, int position) {
         helper.setText(R.id.name3, data.name);
+        helper.setText(R.id.textData3, ((EntityDataText) data).dataText);
     }
 
     @Override

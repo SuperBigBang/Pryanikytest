@@ -8,7 +8,6 @@ import android.support.v7.widget.RecyclerView;
 
 import com.arellomobile.mvp.MvpAppCompatActivity;
 import com.arellomobile.mvp.presenter.InjectPresenter;
-import com.superbigbang.pryanikytest.ExtendApplication;
 import com.superbigbang.pryanikytest.R;
 import com.superbigbang.pryanikytest.adapter.ListItemRvAdapter;
 
@@ -44,7 +43,7 @@ public class TopLevelViewActivity extends MvpAppCompatActivity implements TopLev
            /* if (view.getId() == R.id.) {
               mTopLevelPresenter. ;
             }*/
-            view.startAnimation(ExtendApplication.getAnimFadein());
+            //  view.startAnimation(ExtendApplication.getAnimFadein());
         });
     }
 

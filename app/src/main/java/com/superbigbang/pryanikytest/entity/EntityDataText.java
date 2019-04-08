@@ -1,4 +1,3 @@
-
 package com.superbigbang.pryanikytest.entity;
 
 

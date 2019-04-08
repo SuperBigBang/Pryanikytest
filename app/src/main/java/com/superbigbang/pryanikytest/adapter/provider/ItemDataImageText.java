@@ -1,10 +1,11 @@
 package com.superbigbang.pryanikytest.adapter.provider;
 
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.chad.library.adapter.base.provider.BaseItemProvider;
-import com.superbigbang.pryanikytest.ExtendApplication;
+import com.squareup.picasso.Picasso;
 import com.superbigbang.pryanikytest.R;
 import com.superbigbang.pryanikytest.adapter.ListItemRvAdapter;
 import com.superbigbang.pryanikytest.entity.EntityDataImageText;
@@ -33,13 +34,15 @@ public class ItemDataImageText extends BaseItemProvider<ItemsForRecyclerView, Ba
     @Override
     public void convert(BaseViewHolder helper, ItemsForRecyclerView data, int position) {
         helper.setText(R.id.name, data.name);
+        helper.setText(R.id.textData, ((EntityDataImageText) data).dataText);
+        Picasso.get().load(((EntityDataImageText) data).imageUrl).into((ImageView) (helper.getView(R.id.imageData)));
     }
 
     @Override
     public void onClick(BaseViewHolder helper, ItemsForRecyclerView data, int position) {
         Toast.makeText(mContext, "click", Toast.LENGTH_SHORT).show();
-        helper.setText(R.id.textData,((EntityDataImageText) data).dataText);
-        helper.setImageDrawable(R.id.imageData, ExtendApplication.getBaseComponent().getContext().getResources().getDrawable(R.drawable.opportunities_8_talents_local));
+        helper.setText(R.id.textData, ((EntityDataImageText) data).dataText);
+        // helper.setImageDrawable(R.id.imageData, ExtendApplication.getBaseComponent().getContext().getResources().getDrawable(R.drawable.opportunities_8_talents_local));
         //for local test
     }
 
