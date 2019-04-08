@@ -48,7 +48,14 @@ dependencies {
     implementation deps.moxy.core
     implementation deps.moxy.compat
     annotationProcessor deps.moxy.compiler
+    implementation deps.retrofit.core
+    implementation deps.retrofit.gson
+    implementation deps.retrofit.rxjava2adapter
+    implementation deps.okhttp.core
+    implementation deps.okhttp.logger
     implementation 'com.google.code.gson:gson:2.8.5'
     compileOnly 'org.projectlombok:lombok:1.18.6'
     annotationProcessor 'org.projectlombok:lombok:1.18.6'
+    implementation 'com.squareup.moshi:moshi:1.8.0'
+    implementation 'com.squareup.retrofit2:converter-moshi:2.5.0'
 }

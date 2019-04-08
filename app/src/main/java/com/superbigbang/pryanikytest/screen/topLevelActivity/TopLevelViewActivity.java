@@ -12,6 +12,7 @@ import com.superbigbang.pryanikytest.ExtendApplication;
 import com.superbigbang.pryanikytest.R;
 import com.superbigbang.pryanikytest.adapter.ListItemRvAdapter;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class TopLevelViewActivity extends MvpAppCompatActivity implements TopLevelView {
@@ -21,7 +22,8 @@ public class TopLevelViewActivity extends MvpAppCompatActivity implements TopLev
     TopLevelPresenter mTopLevelPresenter;
     SharedPreferences mSettings;
 
-    RecyclerView mRecyclerSongsList;
+    @BindView(R.id.RecyclerList)
+    RecyclerView mRecyclerList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,16 +31,15 @@ public class TopLevelViewActivity extends MvpAppCompatActivity implements TopLev
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_top_level);
         ButterKnife.bind(this);
-        ;
 
         LinearLayoutManager managerList = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
-     //   mRecyclerSongsList.setLayoutManager(managerList);
-     //   mTopLevelPresenter.showList();
+        mRecyclerList.setLayoutManager(managerList);
+        mTopLevelPresenter.showList();
     }
 
     @Override
     public void showList(ListItemRvAdapter listItemRvAdapter) {
-        mRecyclerSongsList.setAdapter(listItemRvAdapter);
+        mRecyclerList.setAdapter(listItemRvAdapter);
         listItemRvAdapter.setOnItemChildClickListener((adapter, view, position) -> {
            /* if (view.getId() == R.id.) {
               mTopLevelPresenter. ;

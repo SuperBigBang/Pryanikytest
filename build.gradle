@@ -6,8 +6,8 @@ buildscript {
             'targetSdk'     : 28,
 
             'supportLibrary': '28.0.0',
-            'okhttp'        : '3.11.0',
-            'retrofit'      : '2.4.0',
+            'okhttp'        : '3.14.0',
+            'retrofit'      : '2.5.0',
             'espresso'      : '3.0.2',
             'dagger2'       : '2.16',
             'butterknife'   : '8.8.1',
@@ -24,6 +24,15 @@ buildscript {
                     'cardview'        : "com.android.support:cardview-v7:${versions.supportLibrary}",
                     'recyclerView'    : "com.android.support:recyclerview-v7:${versions.supportLibrary}",
                     'constraintLayout': 'com.android.support.constraint:constraint-layout:1.0.2',
+            ],
+            'okhttp'                       : [
+                    'core'  : "com.squareup.okhttp3:okhttp:${versions.okhttp}",
+                    'logger': "com.squareup.okhttp3:logging-interceptor:${versions.okhttp}",
+            ],
+            'retrofit'                     : [
+                    'core'          : "com.squareup.retrofit2:retrofit:${versions.retrofit}",
+                    'gson'          : "com.squareup.retrofit2:converter-gson:${versions.retrofit}",
+                    'rxjava2adapter': "com.squareup.retrofit2:adapter-rxjava2:${versions.retrofit}",
             ],
             'timber'                       : 'com.jakewharton.timber:timber:4.7.1',
             'picasso'                      : 'com.squareup.picasso:picasso:2.71828',
