@@ -5,6 +5,9 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ProgressBar;
 
 import com.arellomobile.mvp.MvpAppCompatActivity;
 import com.arellomobile.mvp.presenter.InjectPresenter;
@@ -23,6 +26,8 @@ public class TopLevelViewActivity extends MvpAppCompatActivity implements TopLev
 
     @BindView(R.id.RecyclerList)
     RecyclerView mRecyclerList;
+    @BindView(R.id.progressBar4)
+    ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,12 +44,29 @@ public class TopLevelViewActivity extends MvpAppCompatActivity implements TopLev
     @Override
     public void showList(ListItemRvAdapter listItemRvAdapter) {
         mRecyclerList.setAdapter(listItemRvAdapter);
+        listItemRvAdapter.bindToRecyclerView(mRecyclerList);
         listItemRvAdapter.setOnItemChildClickListener((adapter, view, position) -> {
-           /* if (view.getId() == R.id.) {
-              mTopLevelPresenter. ;
-            }*/
-            //  view.startAnimation(ExtendApplication.getAnimFadein());
+            switch (view.getId()) {
+                case R.id.name:
+                    if (adapter.getViewByPosition(position, R.id.textData).getVisibility() == View.GONE) {
+                        adapter.getViewByPosition(position, R.id.progressBar).setVisibility(View.VISIBLE);
+                        mTopLevelPresenter.loadSelectedPositionInfo((String) (((Button) adapter.getViewByPosition(position, R.id.name)).getText()), adapter, view, position);
+                    } else {
+                        adapter.getViewByPosition(position, R.id.imageData).setVisibility(View.GONE);
+                        adapter.getViewByPosition(position, R.id.textData).setVisibility(View.GONE);
+                    }
+                    break;
+                //case R.id.
+            }
         });
+    }
+
+    public void changeVisibilityForProgressBar(boolean visible) {
+        if (visible) {
+            progressBar.setVisibility(View.VISIBLE);
+        } else {
+            progressBar.setVisibility(View.GONE);
+        }
     }
 
     @Override

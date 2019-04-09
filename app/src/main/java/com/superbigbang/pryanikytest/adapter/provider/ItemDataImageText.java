@@ -1,14 +1,9 @@
 package com.superbigbang.pryanikytest.adapter.provider;
 
-import android.widget.ImageView;
-import android.widget.Toast;
-
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.chad.library.adapter.base.provider.BaseItemProvider;
-import com.squareup.picasso.Picasso;
 import com.superbigbang.pryanikytest.R;
 import com.superbigbang.pryanikytest.adapter.ListItemRvAdapter;
-import com.superbigbang.pryanikytest.entity.EntityDataImageText;
 import com.superbigbang.pryanikytest.entity.ItemsForRecyclerView;
 
 /**
@@ -20,7 +15,6 @@ import com.superbigbang.pryanikytest.entity.ItemsForRecyclerView;
  */
 
 public class ItemDataImageText extends BaseItemProvider<ItemsForRecyclerView, BaseViewHolder> {
-
     @Override
     public int viewType() {
         return ListItemRvAdapter.ITEM_DATA_IMAGE_TEXT;
@@ -34,21 +28,8 @@ public class ItemDataImageText extends BaseItemProvider<ItemsForRecyclerView, Ba
     @Override
     public void convert(BaseViewHolder helper, ItemsForRecyclerView data, int position) {
         helper.setText(R.id.name, data.name);
-        helper.setText(R.id.textData, ((EntityDataImageText) data).dataText);
-        Picasso.get().load(((EntityDataImageText) data).imageUrl).into((ImageView) (helper.getView(R.id.imageData)));
-    }
-
-    @Override
-    public void onClick(BaseViewHolder helper, ItemsForRecyclerView data, int position) {
-        Toast.makeText(mContext, "click", Toast.LENGTH_SHORT).show();
-        helper.setText(R.id.textData, ((EntityDataImageText) data).dataText);
-        // helper.setImageDrawable(R.id.imageData, ExtendApplication.getBaseComponent().getContext().getResources().getDrawable(R.drawable.opportunities_8_talents_local));
-        //for local test
-    }
-
-    @Override
-    public boolean onLongClick(BaseViewHolder helper, ItemsForRecyclerView data, int position) {
-        Toast.makeText(mContext, "longClick", Toast.LENGTH_SHORT).show();
-        return true;
+        //   helper.setText(R.id.textData, ((EntityDataImageText) data).dataText);
+        //  Picasso.get().load(((EntityDataImageText) data).imageUrl).into((ImageView) (helper.getView(R.id.imageData)));
+        helper.addOnClickListener(R.id.name);
     }
 }

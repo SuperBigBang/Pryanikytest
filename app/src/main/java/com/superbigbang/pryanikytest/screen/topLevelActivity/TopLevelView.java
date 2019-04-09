@@ -15,6 +15,8 @@ public interface TopLevelView extends MvpView {
 
     void showMessage(int messageId, String additionalText);
 
+    void changeVisibilityForProgressBar(boolean visible);
+
     @StateStrategyType(ClearStateStrategy.class)
     void clearStateStrategyPull();
 }
