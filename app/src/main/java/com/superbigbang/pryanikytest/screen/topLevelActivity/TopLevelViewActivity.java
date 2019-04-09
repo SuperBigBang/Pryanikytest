@@ -56,7 +56,14 @@ public class TopLevelViewActivity extends MvpAppCompatActivity implements TopLev
                         adapter.getViewByPosition(position, R.id.textData).setVisibility(View.GONE);
                     }
                     break;
-                //case R.id.
+                case R.id.name3:
+                    if (adapter.getViewByPosition(position, R.id.textData3).getVisibility() == View.GONE) {
+                        adapter.getViewByPosition(position, R.id.progressBar3).setVisibility(View.VISIBLE);
+                        mTopLevelPresenter.loadSelectedPositionInfo((String) (((Button) adapter.getViewByPosition(position, R.id.name3)).getText()), adapter, view, position);
+                    } else {
+                        adapter.getViewByPosition(position, R.id.textData3).setVisibility(View.GONE);
+                    }
+                    break;
             }
         });
     }

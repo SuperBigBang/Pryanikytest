@@ -124,8 +124,10 @@ public class TopLevelPresenter extends BasePresenter<TopLevelView> {
                                 item = new EntityDataText(
                                         ItemsForRecyclerView.ITEM_DATA_TEXT,
                                         null,
-                                        data.getData().getText()
-                                );
+                                        data.getData().getText());
+                                adapter.getViewByPosition(position, R.id.textData3).setVisibility(View.VISIBLE);
+                                ((TextView) adapter.getViewByPosition(position, R.id.textData3)).setText(((EntityDataText) item).dataText);
+                                adapter.getViewByPosition(position, R.id.progressBar3).setVisibility(View.GONE);
                             }
                             break;
                         }
