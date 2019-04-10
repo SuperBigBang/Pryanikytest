@@ -30,7 +30,6 @@ public class NestAdapter extends BaseQuickAdapter<Variants, BaseViewHolder> {
 
     @Override
     protected void convert(BaseViewHolder helper, Variants variant) {
-        //Variants variant = item;
         helper.addOnClickListener(R.id.id4)
                 .addOnClickListener(R.id.name4);
         SwitchCompat switchCompat = helper.getView(R.id.switch4);

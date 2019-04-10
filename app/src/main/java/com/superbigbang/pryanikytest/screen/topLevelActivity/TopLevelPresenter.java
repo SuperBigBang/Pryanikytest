@@ -78,6 +78,7 @@ public class TopLevelPresenter extends BasePresenter<TopLevelView> {
                     getViewState().showList(listItemRvAdapter);
                 }, exception -> {
                     getViewState().changeVisibilityForProgressBar(false);
+                    getViewState().showErrorMessages(100);
                     Timber.e("Exception%s", exception.getMessage());
                 });
 
@@ -166,6 +167,7 @@ public class TopLevelPresenter extends BasePresenter<TopLevelView> {
                         }
                     }
                 }, exception -> {
+                    getViewState().showErrorMessages(100);
                     Timber.e("Exception%s", exception.getMessage());
                 });
         unsubscribeOnDestroy(disposable);

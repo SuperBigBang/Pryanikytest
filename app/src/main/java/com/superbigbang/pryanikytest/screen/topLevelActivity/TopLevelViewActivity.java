@@ -1,7 +1,5 @@
 package com.superbigbang.pryanikytest.screen.topLevelActivity;
 
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -23,10 +21,8 @@ import butterknife.ButterKnife;
 
 public class TopLevelViewActivity extends MvpAppCompatActivity implements TopLevelView {
 
-    private static final String APP_PREFERENCES = "PRYANIKYTEST_PREFERENCES";
     @InjectPresenter
     TopLevelPresenter mTopLevelPresenter;
-    SharedPreferences mSettings;
 
     @BindView(R.id.RecyclerList)
     RecyclerView mRecyclerList;
@@ -35,7 +31,6 @@ public class TopLevelViewActivity extends MvpAppCompatActivity implements TopLev
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        mSettings = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_top_level);
         ButterKnife.bind(this);
@@ -101,29 +96,15 @@ public class TopLevelViewActivity extends MvpAppCompatActivity implements TopLev
     }
 
     @Override
-    protected void onStop() {
-        super.onStop();
-        //Save on sharedpreference when app stop
-        SharedPreferences.Editor editor = mSettings.edit();
-        //  editor.put
-        editor.apply();
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-    }
-
-    @Override
     public void clearStateStrategyPull() {
     }
 
     public void showErrorMessages(int errorId) {
-      /*  switch (errorId) {
+        switch (errorId) {
             case 100:
-                Toast.makeText(this, getText(R.string.).show();
+                Toast.makeText(this, getString(R.string.error_loading_data), Toast.LENGTH_LONG).show();
                 break;
-        }*/
+        }
     }
 
     public void showMessage(int messageId, String additionalText) {
