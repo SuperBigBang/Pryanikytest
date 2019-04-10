@@ -2,6 +2,7 @@ package com.superbigbang.pryanikytest.adapter;
 
 import android.support.annotation.Nullable;
 import android.support.v7.widget.SwitchCompat;
+import android.widget.CompoundButton;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
@@ -21,6 +22,7 @@ import java.util.List;
 public class NestAdapter extends BaseQuickAdapter<Variants, BaseViewHolder> {
     private int selectedID;
     public int savedPositionOfSelectedID;
+    public CompoundButton.OnCheckedChangeListener checkedChangeListener;
     public NestAdapter(@Nullable List<Variants> data, int selectedID) {
         super(R.layout.layout_nest_item_on_selector, data);
         this.selectedID=selectedID;
@@ -29,8 +31,7 @@ public class NestAdapter extends BaseQuickAdapter<Variants, BaseViewHolder> {
     @Override
     protected void convert(BaseViewHolder helper, Variants variant) {
         //Variants variant = item;
-        helper.addOnClickListener(R.id.switch4)
-                .addOnClickListener(R.id.id4)
+        helper.addOnClickListener(R.id.id4)
                 .addOnClickListener(R.id.name4);
         SwitchCompat switchCompat = helper.getView(R.id.switch4);
         switchCompat.setSwitchPadding(40);
@@ -40,16 +41,7 @@ public class NestAdapter extends BaseQuickAdapter<Variants, BaseViewHolder> {
             switchCompat.setChecked(true);
             this.savedPositionOfSelectedID = helper.getLayoutPosition();
         }
-        switchCompat.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            if (buttonView.getId() == R.id.switch4 && isChecked) {
-                buttonView.setOnCheckedChangeListener(null);
-                buttonView.callOnClick();
-            } else if (buttonView.getId() == R.id.switch4 && !isChecked) {
-                buttonView.setOnCheckedChangeListener(null);
-                buttonView.setChecked(true);
-                buttonView.callOnClick();
-            }
-        });
+        helper.setOnCheckedChangeListener(R.id.switch4, checkedChangeListener);
     }
 }
 
