@@ -1,5 +1,8 @@
 package com.superbigbang.pryanikytest.screen.topLevelActivity;
 
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SwitchCompat;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -10,6 +13,7 @@ import com.squareup.picasso.Picasso;
 import com.superbigbang.pryanikytest.ExtendApplication;
 import com.superbigbang.pryanikytest.R;
 import com.superbigbang.pryanikytest.adapter.ListItemRvAdapter;
+import com.superbigbang.pryanikytest.adapter.NestAdapter;
 import com.superbigbang.pryanikytest.entity.EntityDataImageText;
 import com.superbigbang.pryanikytest.entity.EntityDataText;
 import com.superbigbang.pryanikytest.entity.EntitySelector;
@@ -55,31 +59,18 @@ public class TopLevelPresenter extends BasePresenter<TopLevelView> {
                                 if (data.getData().getUrl() != null) {
                                     itemsForRecyclerViews.add(new EntityDataImageText(
                                             ItemsForRecyclerView.ITEM_DATA_IMAGE_TEXT,
-                                            data.getName(),
-                                            null,
-                                            null));
-                                    //              data.getData().getText(),
-                                    //             data.getData().getUrl()));
+                                            data.getName()));
                                 } else if (data.getData().getSelectedId() != null) {
-                                    Timber.e(data.getName());
-                                    Timber.e(String.valueOf(data.getData().getSelectedId()));
-                                    Timber.e((String.valueOf(data.getData().getVariants().size())));
                                     itemsForRecyclerViews.add(new EntitySelector(
                                             ItemsForRecyclerView.ITEM_DATA_SELECTOR_LIST,
-                                            data.getName(),
-                                            data.getData().getSelectedId(),
-                                            data.getData().getVariants()
-                                    ));
+                                            data.getName()));
                                 } else {
                                     itemsForRecyclerViews.add(new EntityDataText(
                                             ItemsForRecyclerView.ITEM_DATA_TEXT,
-                                            data.getName(),
-                                            data.getData().getText()
-                                    ));
+                                            data.getName()));
                                 }
                                 break;
                             }
-                            Timber.e("count");
                         }
                     }
                     ListItemRvAdapter listItemRvAdapter = new ListItemRvAdapter(itemsForRecyclerViews);
@@ -104,8 +95,6 @@ public class TopLevelPresenter extends BasePresenter<TopLevelView> {
                             Data data = json.getData().get(j);
                             if (data.getData().getUrl() != null) {
                                 item = new EntityDataImageText(
-                                        ItemsForRecyclerView.ITEM_DATA_IMAGE_TEXT,
-                                        null,
                                         data.getData().getText(),
                                         data.getData().getUrl());
                                 adapter.getViewByPosition(position, R.id.imageData).setVisibility(View.VISIBLE);
@@ -115,15 +104,42 @@ public class TopLevelPresenter extends BasePresenter<TopLevelView> {
                                 adapter.getViewByPosition(position, R.id.progressBar).setVisibility(View.GONE);
                             } else if (data.getData().getSelectedId() != null) {
                                 item = new EntitySelector(
-                                        ItemsForRecyclerView.ITEM_DATA_SELECTOR_LIST,
-                                        null,
                                         data.getData().getSelectedId(),
-                                        data.getData().getVariants()
-                                );
+                                        data.getData().getVariants());
+                                adapter.getViewByPosition(position, R.id.nest_selector_list).setVisibility(View.VISIBLE);
+                                final RecyclerView recyclerView = (RecyclerView) adapter.getViewByPosition(position, R.id.nest_selector_list);
+                                recyclerView.setLayoutManager(new LinearLayoutManager(adapter.getViewByPosition(position, R.id.nest_selector_list).getContext(), LinearLayoutManager.VERTICAL, false));
+                                recyclerView.setHasFixedSize(true);
+                                NestAdapter nestAdapter = new NestAdapter((((EntitySelector) item).variants), ((EntitySelector) item).selectedId);
+                                recyclerView.setAdapter(nestAdapter);
+                                adapter.getViewByPosition(position, R.id.progressBar5).setVisibility(View.GONE);
+
+                                nestAdapter.bindToRecyclerView(recyclerView);
+                                nestAdapter.setOnItemChildClickListener((adapter2, view2, position2) -> {
+                                    switch (view2.getId()) {
+                                        case R.id.name4:
+                                            view2.startAnimation(ExtendApplication.getAnimFadein());
+                                            sendMessageToScreen(200, "Item " + ((TextView) view2).getText()
+                                                    + ", has clicked at position: " + String.valueOf(position2));
+                                            break;
+                                        case R.id.id4:
+                                            view2.startAnimation(ExtendApplication.getAnimFadein());
+                                            sendMessageToScreen(200, "Item " + ((TextView) view2).getText()
+                                                    + ", has clicked at position: " + String.valueOf(position2));
+                                            break;
+                                        case R.id.switch4:
+                                            ((SwitchCompat) adapter2.getViewByPosition(nestAdapter.savedPositionOfSelectedID, R.id.switch4)).setChecked(false);
+                                            ((SwitchCompat) view2).setChecked(true);
+                                            nestAdapter.savedPositionOfSelectedID = position2;
+                                            sendMessageToScreen(200, "Switch at ID: "
+                                                    + (((TextView) adapter2.getViewByPosition(position2, R.id.id4)).getText())
+                                                    + ", with Value: "
+                                                    + (((TextView) adapter2.getViewByPosition(position2, R.id.name4)).getText())
+                                                    + ", has turn ON at position: " + String.valueOf(position2));
+                                    }
+                                });
                             } else {
                                 item = new EntityDataText(
-                                        ItemsForRecyclerView.ITEM_DATA_TEXT,
-                                        null,
                                         data.getData().getText());
                                 adapter.getViewByPosition(position, R.id.textData3).setVisibility(View.VISIBLE);
                                 ((TextView) adapter.getViewByPosition(position, R.id.textData3)).setText(((EntityDataText) item).dataText);
@@ -136,5 +152,9 @@ public class TopLevelPresenter extends BasePresenter<TopLevelView> {
                     Timber.e("Exception%s", exception.getMessage());
                 });
         unsubscribeOnDestroy(disposable);
+    }
+
+    void sendMessageToScreen(int messageId, String additionalText) {
+        getViewState().showMessage(messageId, additionalText);
     }
 }

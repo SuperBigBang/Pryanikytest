@@ -10,7 +10,7 @@
         android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/backgroundWindowColor"
+        android:background="@color/colorPrimaryDark_state_white_blue"
         android:gravity="center"
         android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/divider1"

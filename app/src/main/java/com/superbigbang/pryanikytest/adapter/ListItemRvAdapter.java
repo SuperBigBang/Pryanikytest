@@ -1,7 +1,5 @@
 package com.superbigbang.pryanikytest.adapter;
 
-import android.support.annotation.Nullable;
-
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.chad.library.adapter.base.MultipleItemRvAdapter;
 import com.superbigbang.pryanikytest.adapter.provider.ItemDataImageText;
@@ -34,17 +32,6 @@ public class ListItemRvAdapter extends MultipleItemRvAdapter<ItemsForRecyclerVie
         return 0;
     }
 
-    /*
-    @Override
-    public void onItemChildClick(BaseQuickAdapter adapter, View view, int position){
-            Toast.makeText(ExtendApplication.getBaseComponent().getContext(),"Click to child item: "+String.valueOf(view.getId())+" Pos: "+String.valueOf(position),Toast.LENGTH_SHORT).show();
-            }
-
-    @Override
-    public void onItemClick(BaseQuickAdapter adapter,View view,int position){
-        Toast.makeText(ExtendApplication.getBaseComponent().getContext(),"Click to item: "+String.valueOf(view.getId())+" Pos: "+String.valueOf(position),Toast.LENGTH_SHORT).show();
-            }
-    */
     @Override
     public void registerItemProvider() {
         mProviderDelegate.registerProvider(new ItemDataText());

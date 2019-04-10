@@ -28,8 +28,9 @@ public class ItemDataImageText extends BaseItemProvider<ItemsForRecyclerView, Ba
     @Override
     public void convert(BaseViewHolder helper, ItemsForRecyclerView data, int position) {
         helper.setText(R.id.name, data.name);
-        //   helper.setText(R.id.textData, ((EntityDataImageText) data).dataText);
-        //  Picasso.get().load(((EntityDataImageText) data).imageUrl).into((ImageView) (helper.getView(R.id.imageData)));
-        helper.addOnClickListener(R.id.name);
+        helper.addOnClickListener(R.id.name)
+                .addOnClickListener(R.id.progressBar)
+                .addOnClickListener(R.id.imageData)
+                .addOnClickListener(R.id.textData);
     }
 }

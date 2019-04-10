@@ -29,6 +29,8 @@ public class ItemDataText extends BaseItemProvider<ItemsForRecyclerView, BaseVie
     @Override
     public void convert(BaseViewHolder helper, ItemsForRecyclerView data, int position) {
         helper.setText(R.id.name3, data.name);
-        helper.addOnClickListener(R.id.name3);
+        helper.addOnClickListener(R.id.name3)
+                .addOnClickListener(R.id.progressBar3)
+                .addOnClickListener(R.id.textData3);
     }
 }
