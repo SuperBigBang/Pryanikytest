@@ -4,6 +4,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SwitchCompat;
 import android.view.View;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -124,18 +125,54 @@ public class TopLevelPresenter extends BasePresenter<TopLevelView> {
                                             break;
                                         case R.id.id4:
                                             view2.startAnimation(ExtendApplication.getAnimFadein());
-                                            sendMessageToScreen(200, "Item " + ((TextView) view2).getText()
+                                            sendMessageToScreen(200, "Item \"ID\" " + ((TextView) view2).getText()
                                                     + ", has clicked at position: " + String.valueOf(position2));
                                             break;
                                         case R.id.switch4:
-                                            ((SwitchCompat) adapter2.getViewByPosition(nestAdapter.savedPositionOfSelectedID, R.id.switch4)).setChecked(false);
-                                            ((SwitchCompat) view2).setChecked(true);
-                                            nestAdapter.savedPositionOfSelectedID = position2;
-                                            sendMessageToScreen(200, "Switch at ID: "
-                                                    + (((TextView) adapter2.getViewByPosition(position2, R.id.id4)).getText())
-                                                    + ", with Value: "
-                                                    + (((TextView) adapter2.getViewByPosition(position2, R.id.name4)).getText())
-                                                    + ", has turn ON at position: " + String.valueOf(position2));
+                                            CompoundButton.OnCheckedChangeListener listener = (buttonView, isChecked) -> {
+                                                if (buttonView.getId() == R.id.switch4 && isChecked) {
+                                                    buttonView.setOnCheckedChangeListener(null);
+                                                    buttonView.callOnClick();
+                                                } else if (buttonView.getId() == R.id.switch4 && !isChecked) {
+                                                    buttonView.setOnCheckedChangeListener(null);
+                                                    buttonView.setChecked(true);
+                                                    buttonView.callOnClick();
+                                                }
+                                            };
+                                            if (nestAdapter.savedPositionOfSelectedID != position2) {
+                                                if (((SwitchCompat) view2).isChecked()) {
+                                                    SwitchCompat switchCompatSavedPosition = ((SwitchCompat) adapter2.getViewByPosition(nestAdapter.savedPositionOfSelectedID, R.id.switch4));
+                                                    switchCompatSavedPosition.setOnCheckedChangeListener(null);
+                                                    switchCompatSavedPosition.setChecked(false);
+                                                    switchCompatSavedPosition.setOnCheckedChangeListener(listener);
+                                                    SwitchCompat switchCompatActivatedPosition = ((SwitchCompat) view2);
+                                                    switchCompatActivatedPosition.setOnCheckedChangeListener(null);
+                                                    switchCompatActivatedPosition.setChecked(true);
+                                                    switchCompatActivatedPosition.setOnCheckedChangeListener(listener);
+                                                    nestAdapter.savedPositionOfSelectedID = position2;
+                                                    sendMessageToScreen(200, "Switch at ID: "
+                                                            + (((TextView) adapter2.getViewByPosition(position2, R.id.id4)).getText())
+                                                            + ", with Value: "
+                                                            + (((TextView) adapter2.getViewByPosition(position2, R.id.name4)).getText())
+                                                            + ", has turn ON at position: " + String.valueOf(position2));
+                                                } else {
+                                                    sendMessageToScreen(200, "Switch at ID: "
+                                                            + (((TextView) adapter2.getViewByPosition(position2, R.id.id4)).getText())
+                                                            + ", with Value: "
+                                                            + (((TextView) adapter2.getViewByPosition(position2, R.id.name4)).getText())
+                                                            + ", tried to be switched at position: " + String.valueOf(position2));
+                                                }
+                                            } else {
+                                                SwitchCompat switchCompatActivatedPosition = ((SwitchCompat) view2);
+                                                switchCompatActivatedPosition.setOnCheckedChangeListener(null);
+                                                switchCompatActivatedPosition.setChecked(true);
+                                                switchCompatActivatedPosition.setOnCheckedChangeListener(listener);
+                                                sendMessageToScreen(200, "Switch at ID: "
+                                                        + (((TextView) adapter2.getViewByPosition(position2, R.id.id4)).getText())
+                                                        + ", with Value: "
+                                                        + (((TextView) adapter2.getViewByPosition(position2, R.id.name4)).getText())
+                                                        + ", is active at position: " + String.valueOf(position2));
+                                            }
                                     }
                                 });
                             } else {

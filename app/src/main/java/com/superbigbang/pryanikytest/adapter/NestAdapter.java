@@ -32,12 +32,24 @@ public class NestAdapter extends BaseQuickAdapter<Variants, BaseViewHolder> {
         helper.addOnClickListener(R.id.switch4)
                 .addOnClickListener(R.id.id4)
                 .addOnClickListener(R.id.name4);
+        SwitchCompat switchCompat = helper.getView(R.id.switch4);
+        switchCompat.setSwitchPadding(40);
         helper.setText(R.id.id4, String.valueOf(variant.getId()));
         helper.setText(R.id.name4, variant.getText());
         if (variant.getId() == selectedID) {
-            ((SwitchCompat) helper.getView(R.id.switch4)).setChecked(true);
+            switchCompat.setChecked(true);
             this.savedPositionOfSelectedID = helper.getLayoutPosition();
         }
+        switchCompat.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (buttonView.getId() == R.id.switch4 && isChecked) {
+                buttonView.setOnCheckedChangeListener(null);
+                buttonView.callOnClick();
+            } else if (buttonView.getId() == R.id.switch4 && !isChecked) {
+                buttonView.setOnCheckedChangeListener(null);
+                buttonView.setChecked(true);
+                buttonView.callOnClick();
+            }
+        });
     }
 }
 
