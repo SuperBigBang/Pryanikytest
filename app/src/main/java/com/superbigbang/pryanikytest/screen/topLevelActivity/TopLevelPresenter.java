@@ -34,6 +34,10 @@ import timber.log.Timber;
 
 @InjectViewState
 public class TopLevelPresenter extends BasePresenter<TopLevelView> {
+    public static final String ITEM_TEXT_HZ = "hz";
+    public static final String ITEM_PICTURE_WITH_TEXT = "picture";
+    public static final String ITEM_SELECTOR = "selector";
+
     @Inject
     PryanikyTestService mPryanikyTestService;
 
@@ -56,15 +60,15 @@ public class TopLevelPresenter extends BasePresenter<TopLevelView> {
                         for (int j = 0; j < json.getData().size(); j++) {
                             if (json.getView().get(i).equals(json.getData().get(j).getName())) {
                                 Data data = json.getData().get(j);
-                                if (data.getData().getUrl() != null) {
+                                if (data.getName().equalsIgnoreCase(ITEM_PICTURE_WITH_TEXT)) {
                                     itemsForRecyclerViews.add(new EntityDataImageText(
                                             ItemsForRecyclerView.ITEM_DATA_IMAGE_TEXT,
                                             data.getName()));
-                                } else if (data.getData().getSelectedId() != null) {
+                                } else if (data.getName().equalsIgnoreCase(ITEM_SELECTOR)) {
                                     itemsForRecyclerViews.add(new EntitySelector(
                                             ItemsForRecyclerView.ITEM_DATA_SELECTOR_LIST,
                                             data.getName()));
-                                } else {
+                                } else if (data.getName().equalsIgnoreCase(ITEM_TEXT_HZ)) {
                                     itemsForRecyclerViews.add(new EntityDataText(
                                             ItemsForRecyclerView.ITEM_DATA_TEXT,
                                             data.getName()));
