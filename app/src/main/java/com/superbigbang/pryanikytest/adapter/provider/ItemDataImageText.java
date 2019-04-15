@@ -1,9 +1,13 @@
 package com.superbigbang.pryanikytest.adapter.provider;
 
+import android.widget.ImageView;
+
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.chad.library.adapter.base.provider.BaseItemProvider;
+import com.squareup.picasso.Picasso;
 import com.superbigbang.pryanikytest.R;
 import com.superbigbang.pryanikytest.adapter.ListItemRvAdapter;
+import com.superbigbang.pryanikytest.entity.EntityDataImageText;
 import com.superbigbang.pryanikytest.entity.ItemsForRecyclerView;
 
 /**
@@ -27,10 +31,11 @@ public class ItemDataImageText extends BaseItemProvider<ItemsForRecyclerView, Ba
 
     @Override
     public void convert(BaseViewHolder helper, ItemsForRecyclerView data, int position) {
-        helper.setText(R.id.name_picture_item, data.name);
+        helper.setText(R.id.name_picture_item, data.getName());
         helper.addOnClickListener(R.id.name_picture_item)
                 .addOnClickListener(R.id.progressBar_picture_item)
                 .addOnClickListener(R.id.image_picture_item)
                 .addOnClickListener(R.id.text_picture_item);
+        Picasso.get().load(((EntityDataImageText) data).getImageUrl()).into((ImageView) helper.getView(R.id.image_picture_item));
     }
 }

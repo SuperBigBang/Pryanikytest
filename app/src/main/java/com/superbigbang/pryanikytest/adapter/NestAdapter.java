@@ -11,6 +11,9 @@ import com.superbigbang.pryanikytest.model.Variants;
 
 import java.util.List;
 
+import lombok.Getter;
+import lombok.Setter;
+
 /**
  * 文 件 名: AnimationAdapter
  * 创 建 人: Allen
@@ -19,9 +22,11 @@ import java.util.List;
  * 修改时间：
  * 修改备注：
  */
+@Setter
+@Getter
 public class NestAdapter extends BaseQuickAdapter<Variants, BaseViewHolder> {
     private int selectedID;
-    public int savedPositionOfSelectedID;
+    private int savedPositionOfSelectedID;
     public CompoundButton.OnCheckedChangeListener checkedChangeListener;
     public NestAdapter(@Nullable List<Variants> data, int selectedID) {
         super(R.layout.layout_nest_item_on_selector, data);

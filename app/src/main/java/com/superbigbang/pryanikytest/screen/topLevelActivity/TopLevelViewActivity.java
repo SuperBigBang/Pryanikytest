@@ -49,7 +49,7 @@ public class TopLevelViewActivity extends MvpAppCompatActivity implements TopLev
                 case R.id.name_picture_item:
                     if (adapter.getViewByPosition(position, R.id.text_picture_item).getVisibility() == View.GONE) {
                         adapter.getViewByPosition(position, R.id.progressBar_picture_item).setVisibility(View.VISIBLE);
-                        mTopLevelPresenter.loadSelectedPositionInfo((String) (((Button) view).getText()), adapter, view, position);
+                        mTopLevelPresenter.loadSelectedPositionInfo(adapter, position);
                     } else {
                         adapter.getViewByPosition(position, R.id.image_picture_item).setVisibility(View.GONE);
                         adapter.getViewByPosition(position, R.id.text_picture_item).setVisibility(View.GONE);
@@ -58,7 +58,7 @@ public class TopLevelViewActivity extends MvpAppCompatActivity implements TopLev
                 case R.id.name_HZ_item:
                     if (adapter.getViewByPosition(position, R.id.textData_HZ_item).getVisibility() == View.GONE) {
                         adapter.getViewByPosition(position, R.id.progressBar_HZ_item).setVisibility(View.VISIBLE);
-                        mTopLevelPresenter.loadSelectedPositionInfo((String) (((Button) view).getText()), adapter, view, position);
+                        mTopLevelPresenter.loadSelectedPositionInfo(adapter, position);
                     } else {
                         adapter.getViewByPosition(position, R.id.textData_HZ_item).setVisibility(View.GONE);
                     }
@@ -66,7 +66,7 @@ public class TopLevelViewActivity extends MvpAppCompatActivity implements TopLev
                 case R.id.name_selector_item:
                     if (adapter.getViewByPosition(position, R.id.selector_list).getVisibility() == View.GONE) {
                         adapter.getViewByPosition(position, R.id.progressBar_selector_item).setVisibility(View.VISIBLE);
-                        mTopLevelPresenter.loadSelectedPositionInfo((String) (((Button) view).getText()), adapter, view, position);
+                        mTopLevelPresenter.loadSelectedPositionInfo(adapter, position);
                     } else {
                         adapter.getViewByPosition(position, R.id.selector_list).setVisibility(View.GONE);
                     }

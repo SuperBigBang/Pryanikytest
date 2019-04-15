@@ -22,11 +22,11 @@ public class ListItemRvAdapter extends MultipleItemRvAdapter<ItemsForRecyclerVie
 
     @Override
     protected int getViewType(ItemsForRecyclerView entity) {
-        if (entity.type == ItemsForRecyclerView.ITEM_DATA_TEXT) {
+        if (entity.getType() == ItemsForRecyclerView.ITEM_DATA_TEXT) {
             return ITEM_DATA_TEXT;
-        } else if (entity.type == ItemsForRecyclerView.ITEM_DATA_IMAGE_TEXT) {
+        } else if (entity.getType() == ItemsForRecyclerView.ITEM_DATA_IMAGE_TEXT) {
             return ITEM_DATA_IMAGE_TEXT;
-        } else if (entity.type == ItemsForRecyclerView.ITEM_DATA_SELECTOR_LIST) {
+        } else if (entity.getType() == ItemsForRecyclerView.ITEM_DATA_SELECTOR_LIST) {
             return ITEM_DATA_SELECTOR_LIST;
         }
         return 0;

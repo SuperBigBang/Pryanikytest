@@ -29,7 +29,7 @@ public class ItemDataSelectorList extends BaseItemProvider<ItemsForRecyclerView,
     @Override
     public void convert(BaseViewHolder helper, ItemsForRecyclerView data, int position) {
         helper.setNestView(R.id.selector_list); // u can set nestview id
-        helper.setText(R.id.name_selector_item, data.name);
+        helper.setText(R.id.name_selector_item, data.getName());
         helper.addOnClickListener(R.id.name_selector_item)
                 .addOnClickListener(R.id.progressBar_selector_item);
     }

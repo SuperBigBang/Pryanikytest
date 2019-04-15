@@ -4,16 +4,18 @@ import com.superbigbang.pryanikytest.model.Variants;
 
 import java.util.List;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class EntitySelector extends ItemsForRecyclerView {
-    public int selectedId;
-    public List<Variants> variants;
+    private int selectedId;
+    private List<Variants> variants;
 
-    public EntitySelector(int type, String name) {
-        this.type = type;
-        this.name = name;
-    }
-
-    public EntitySelector(int selectedId, List<Variants> variants) {
+    public EntitySelector(int type, String name, int selectedId, List<Variants> variants) {
+        this.setType(type);
+        this.setName(name);
         this.selectedId = selectedId;
         this.variants = variants;
     }
