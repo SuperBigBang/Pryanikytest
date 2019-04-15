@@ -27,10 +27,10 @@ public class ItemDataImageText extends BaseItemProvider<ItemsForRecyclerView, Ba
 
     @Override
     public void convert(BaseViewHolder helper, ItemsForRecyclerView data, int position) {
-        helper.setText(R.id.name, data.name);
-        helper.addOnClickListener(R.id.name)
-                .addOnClickListener(R.id.progressBar)
-                .addOnClickListener(R.id.imageData)
-                .addOnClickListener(R.id.textData);
+        helper.setText(R.id.name_picture_item, data.name);
+        helper.addOnClickListener(R.id.name_picture_item)
+                .addOnClickListener(R.id.progressBar_picture_item)
+                .addOnClickListener(R.id.image_picture_item)
+                .addOnClickListener(R.id.text_picture_item);
     }
 }

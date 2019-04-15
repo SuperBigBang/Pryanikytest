@@ -7,17 +7,17 @@
     android:layout_gravity="center">
 
     <android.support.constraint.ConstraintLayout
-        android:id="@+id/linearLayout2"
+        android:id="@+id/linearLayoutOfNestedList_selector"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorPrimaryDark_state_white_blue"
         android:gravity="center"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/divider1"
-        app:layout_constraintTop_toTopOf="@+id/divider1">
+        app:layout_constraintBottom_toTopOf="@+id/divider1_nestSelector_item"
+        app:layout_constraintTop_toTopOf="@+id/divider1_nestSelector_item">
 
         <TextView
-            android:id="@+id/id4"
+            android:id="@+id/id_nestSelector_item"
             android:layout_width="33sp"
             android:layout_height="wrap_content"
             android:ellipsize="end"
@@ -30,24 +30,24 @@
             android:textColor="@color/colorPrimartWhiteDarkBlueTheme"
             android:textSize="18sp"
             android:textStyle="normal"
-            app:layout_constraintBottom_toBottomOf="@+id/name4"
+            app:layout_constraintBottom_toBottomOf="@+id/name_nestSelector_item"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/divider1"
+            android:id="@+id/divider1_nestSelector_item"
             android:layout_width="1dp"
             android:layout_height="0dp"
             android:layout_marginTop="4dp"
             android:layout_marginBottom="4dp"
             android:contentDescription="@string/divider"
-            app:layout_constraintBottom_toBottomOf="@+id/name4"
-            app:layout_constraintStart_toEndOf="@+id/id4"
-            app:layout_constraintTop_toTopOf="@+id/name4"
+            app:layout_constraintBottom_toBottomOf="@+id/name_nestSelector_item"
+            app:layout_constraintStart_toEndOf="@+id/id_nestSelector_item"
+            app:layout_constraintTop_toTopOf="@+id/name_nestSelector_item"
             app:srcCompat="@color/cornerColorDarkBlueTheme" />
 
         <TextView
-            android:id="@+id/name4"
+            android:id="@+id/name_nestSelector_item"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:ellipsize="end"
@@ -59,38 +59,38 @@
             android:textColor="@color/colorPrimartWhiteDarkBlueTheme"
             android:textSize="18sp"
             android:textStyle="normal"
-            app:layout_constraintEnd_toStartOf="@+id/divider2"
-            app:layout_constraintStart_toEndOf="@+id/divider1"
+            app:layout_constraintEnd_toStartOf="@+id/divider2_nestSelector_item"
+            app:layout_constraintStart_toEndOf="@+id/divider1_nestSelector_item"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/divider2"
+            android:id="@+id/divider2_nestSelector_item"
             android:layout_width="1dp"
             android:layout_height="0dp"
             android:layout_marginTop="4dp"
             android:layout_marginEnd="100dp"
             android:layout_marginBottom="4dp"
             android:contentDescription="@string/divider"
-            app:layout_constraintBottom_toBottomOf="@+id/name4"
+            app:layout_constraintBottom_toBottomOf="@+id/name_nestSelector_item"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/name4"
+            app:layout_constraintTop_toTopOf="@+id/name_nestSelector_item"
             app:srcCompat="@color/cornerColorDarkBlueTheme" />
 
         <android.support.v7.widget.SwitchCompat
-            android:id="@+id/switch4"
+            android:id="@+id/switch_nestSelector_item"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
             android:checked="false"
             android:theme="@style/MySwitch"
-            app:layout_constraintBottom_toBottomOf="@+id/name4"
+            app:layout_constraintBottom_toBottomOf="@+id/name_nestSelector_item"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/divider2"
+            app:layout_constraintStart_toEndOf="@+id/divider2_nestSelector_item"
             app:layout_constraintTop_toTopOf="parent" />
 
         <View
-            android:id="@+id/horizontalDivider"
+            android:id="@+id/horizontalDivider_nestSelector_item"
             android:layout_width="wrap_content"
             android:layout_height="1dp"
             android:background="@color/cornerColorDarkBlueTheme"
@@ -99,7 +99,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <View
-            android:id="@+id/horizontalDivider2"
+            android:id="@+id/horizontalDivider2_nestSelector_item"
             android:layout_width="wrap_content"
             android:layout_height="1dp"
             android:background="@color/cornerColorDarkBlueTheme"

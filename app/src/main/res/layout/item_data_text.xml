@@ -7,29 +7,28 @@
     android:layout_gravity="center">
 
     <android.support.constraint.ConstraintLayout
-        android:id="@+id/linearLayout2"
+        android:id="@+id/constraintLayout_HZ_item"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorPrimaryDarkBlueBackground"
         android:gravity="center"
-        android:orientation="horizontal"
-       >
+        android:orientation="horizontal">
 
         <ProgressBar
-            android:id="@+id/progressBar3"
+            android:id="@+id/progressBar_HZ_item"
             style="?android:attr/progressBarStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
             android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/name3" />
+            app:layout_constraintTop_toBottomOf="@id/name_HZ_item" />
 
         <Button
-            android:id="@+id/name3"
+            android:id="@+id/name_HZ_item"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
@@ -37,13 +36,13 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textData3"
+            android:id="@+id/textData_HZ_item"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:ellipsize="end"
             android:layout_marginStart="4dp"
             android:layout_marginEnd="4dp"
             android:background="@color/colorPrimaryDark_state_white_blue"
+            android:ellipsize="end"
             android:fontFamily="@font/roboto_medium"
             android:gravity="center_horizontal"
             android:paddingStart="@dimen/dp_4"
@@ -55,7 +54,7 @@
             android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/name3" />
+            app:layout_constraintTop_toBottomOf="@+id/name_HZ_item" />
 
     </android.support.constraint.ConstraintLayout>
 </android.support.v7.widget.CardView>

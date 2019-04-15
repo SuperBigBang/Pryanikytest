@@ -8,23 +8,23 @@
     android:background="@color/colorPrimaryDark_state_white_blue">
 
     <android.support.constraint.ConstraintLayout
-        android:id="@+id/linearLayout2"
+        android:id="@+id/constraintLayout_picture_item"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorPrimaryDarkBlueBackground">
 
         <ProgressBar
-            android:id="@+id/progressBar"
+            android:id="@+id/progressBar_picture_item"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/name" />
+            app:layout_constraintTop_toBottomOf="@id/name_picture_item" />
 
         <Button
-            android:id="@+id/name"
+            android:id="@+id/name_picture_item"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
@@ -32,30 +32,30 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/imageData"
+            android:id="@+id/image_picture_item"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp"
             android:contentDescription="@string/imagedata"
             android:visibility="gone"
-            android:layout_marginStart="4dp"
-            android:layout_marginEnd="4dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/name" />
+            app:layout_constraintTop_toBottomOf="@+id/name_picture_item" />
 
         <TextView
-            android:id="@+id/textData"
+            android:id="@+id/text_picture_item"
             android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
             android:layout_marginEnd="4dp"
-            android:layout_height="wrap_content"
+            android:background="@color/colorPrimaryDark_state_white_blue"
             android:ellipsize="end"
             android:fontFamily="@font/roboto_medium"
             android:gravity="center_horizontal"
             android:paddingStart="@dimen/dp_4"
             android:paddingEnd="@dimen/dp_4"
             android:text=""
-            android:background="@color/colorPrimaryDark_state_white_blue"
             android:textAlignment="center"
             android:textColor="@color/colorPrimartWhiteDarkBlueTheme"
             android:textSize="18sp"
@@ -63,7 +63,7 @@
             android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageData" />
+            app:layout_constraintTop_toBottomOf="@+id/image_picture_item" />
 
     </android.support.constraint.ConstraintLayout>
 

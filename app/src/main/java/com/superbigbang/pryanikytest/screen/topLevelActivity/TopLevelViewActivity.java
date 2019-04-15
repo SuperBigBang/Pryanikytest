@@ -24,9 +24,9 @@ public class TopLevelViewActivity extends MvpAppCompatActivity implements TopLev
     @InjectPresenter
     TopLevelPresenter mTopLevelPresenter;
 
-    @BindView(R.id.RecyclerList)
+    @BindView(R.id.TopLevelActivityRecyclerList)
     RecyclerView mRecyclerList;
-    @BindView(R.id.progressBar4)
+    @BindView(R.id.topLevelActivityProgressBar)
     ProgressBar progressBar;
 
     @Override
@@ -46,29 +46,29 @@ public class TopLevelViewActivity extends MvpAppCompatActivity implements TopLev
         listItemRvAdapter.bindToRecyclerView(mRecyclerList);
         listItemRvAdapter.setOnItemChildClickListener((adapter, view, position) -> {
             switch (view.getId()) {
-                case R.id.name:
-                    if (adapter.getViewByPosition(position, R.id.textData).getVisibility() == View.GONE) {
-                        adapter.getViewByPosition(position, R.id.progressBar).setVisibility(View.VISIBLE);
+                case R.id.name_picture_item:
+                    if (adapter.getViewByPosition(position, R.id.text_picture_item).getVisibility() == View.GONE) {
+                        adapter.getViewByPosition(position, R.id.progressBar_picture_item).setVisibility(View.VISIBLE);
                         mTopLevelPresenter.loadSelectedPositionInfo((String) (((Button) view).getText()), adapter, view, position);
                     } else {
-                        adapter.getViewByPosition(position, R.id.imageData).setVisibility(View.GONE);
-                        adapter.getViewByPosition(position, R.id.textData).setVisibility(View.GONE);
+                        adapter.getViewByPosition(position, R.id.image_picture_item).setVisibility(View.GONE);
+                        adapter.getViewByPosition(position, R.id.text_picture_item).setVisibility(View.GONE);
                     }
                     break;
-                case R.id.name3:
-                    if (adapter.getViewByPosition(position, R.id.textData3).getVisibility() == View.GONE) {
-                        adapter.getViewByPosition(position, R.id.progressBar3).setVisibility(View.VISIBLE);
+                case R.id.name_HZ_item:
+                    if (adapter.getViewByPosition(position, R.id.textData_HZ_item).getVisibility() == View.GONE) {
+                        adapter.getViewByPosition(position, R.id.progressBar_HZ_item).setVisibility(View.VISIBLE);
                         mTopLevelPresenter.loadSelectedPositionInfo((String) (((Button) view).getText()), adapter, view, position);
                     } else {
-                        adapter.getViewByPosition(position, R.id.textData3).setVisibility(View.GONE);
+                        adapter.getViewByPosition(position, R.id.textData_HZ_item).setVisibility(View.GONE);
                     }
                     break;
-                case R.id.name5:
-                    if (adapter.getViewByPosition(position, R.id.nest_selector_list).getVisibility() == View.GONE) {
-                        adapter.getViewByPosition(position, R.id.progressBar5).setVisibility(View.VISIBLE);
+                case R.id.name_selector_item:
+                    if (adapter.getViewByPosition(position, R.id.selector_list).getVisibility() == View.GONE) {
+                        adapter.getViewByPosition(position, R.id.progressBar_selector_item).setVisibility(View.VISIBLE);
                         mTopLevelPresenter.loadSelectedPositionInfo((String) (((Button) view).getText()), adapter, view, position);
                     } else {
-                        adapter.getViewByPosition(position, R.id.nest_selector_list).setVisibility(View.GONE);
+                        adapter.getViewByPosition(position, R.id.selector_list).setVisibility(View.GONE);
                     }
                     break;
             }

@@ -98,32 +98,32 @@ public class TopLevelPresenter extends BasePresenter<TopLevelView> {
                                 item = new EntityDataImageText(
                                         data.getData().getText(),
                                         data.getData().getUrl());
-                                adapter.getViewByPosition(position, R.id.imageData).setVisibility(View.VISIBLE);
-                                Picasso.get().load(((EntityDataImageText) item).imageUrl).into((ImageView) adapter.getViewByPosition(position, R.id.imageData));
-                                adapter.getViewByPosition(position, R.id.textData).setVisibility(View.VISIBLE);
-                                ((TextView) adapter.getViewByPosition(position, R.id.textData)).setText(((EntityDataImageText) item).dataText);
-                                adapter.getViewByPosition(position, R.id.progressBar).setVisibility(View.GONE);
+                                adapter.getViewByPosition(position, R.id.image_picture_item).setVisibility(View.VISIBLE);
+                                Picasso.get().load(((EntityDataImageText) item).imageUrl).into((ImageView) adapter.getViewByPosition(position, R.id.image_picture_item));
+                                adapter.getViewByPosition(position, R.id.text_picture_item).setVisibility(View.VISIBLE);
+                                ((TextView) adapter.getViewByPosition(position, R.id.text_picture_item)).setText(((EntityDataImageText) item).dataText);
+                                adapter.getViewByPosition(position, R.id.progressBar_picture_item).setVisibility(View.GONE);
                             } else if (data.getData().getSelectedId() != null) {
                                 item = new EntitySelector(
                                         data.getData().getSelectedId(),
                                         data.getData().getVariants());
-                                adapter.getViewByPosition(position, R.id.nest_selector_list).setVisibility(View.VISIBLE);
-                                final RecyclerView recyclerView = (RecyclerView) adapter.getViewByPosition(position, R.id.nest_selector_list);
-                                recyclerView.setLayoutManager(new LinearLayoutManager(adapter.getViewByPosition(position, R.id.nest_selector_list).getContext(), LinearLayoutManager.VERTICAL, false));
+                                adapter.getViewByPosition(position, R.id.selector_list).setVisibility(View.VISIBLE);
+                                final RecyclerView recyclerView = (RecyclerView) adapter.getViewByPosition(position, R.id.selector_list);
+                                recyclerView.setLayoutManager(new LinearLayoutManager(adapter.getViewByPosition(position, R.id.selector_list).getContext(), LinearLayoutManager.VERTICAL, false));
                                 recyclerView.setHasFixedSize(true);
                                 NestAdapter nestAdapter = new NestAdapter((((EntitySelector) item).variants), ((EntitySelector) item).selectedId);
                                 nestAdapter.checkedChangeListener = (buttonView, isChecked) -> {
                                     int position2 = recyclerView.findContainingViewHolder(buttonView).getLayoutPosition();
                                     if (isChecked) {
-                                        SwitchCompat switchCompatSavedPosition = ((SwitchCompat) nestAdapter.getViewByPosition(nestAdapter.savedPositionOfSelectedID, R.id.switch4));
+                                        SwitchCompat switchCompatSavedPosition = ((SwitchCompat) nestAdapter.getViewByPosition(nestAdapter.savedPositionOfSelectedID, R.id.switch_nestSelector_item));
                                         switchCompatSavedPosition.setOnCheckedChangeListener(null);
                                         switchCompatSavedPosition.setChecked(false);
                                         switchCompatSavedPosition.setOnCheckedChangeListener(nestAdapter.checkedChangeListener);
                                         nestAdapter.savedPositionOfSelectedID = position2;
                                         sendMessageToScreen(200, "Switch at ID: "
-                                                + (((TextView) nestAdapter.getViewByPosition(position2, R.id.id4)).getText())
+                                                + (((TextView) nestAdapter.getViewByPosition(position2, R.id.id_nestSelector_item)).getText())
                                                 + ", with Value: "
-                                                + (((TextView) nestAdapter.getViewByPosition(position2, R.id.name4)).getText())
+                                                + (((TextView) nestAdapter.getViewByPosition(position2, R.id.name_nestSelector_item)).getText())
                                                 + ", has turn ON at position: " + String.valueOf(position2));
                                     } else {
                                         SwitchCompat switchCompatSavedPosition = ((SwitchCompat) buttonView);
@@ -131,25 +131,25 @@ public class TopLevelPresenter extends BasePresenter<TopLevelView> {
                                         switchCompatSavedPosition.setChecked(true);
                                         switchCompatSavedPosition.setOnCheckedChangeListener(nestAdapter.checkedChangeListener);
                                         sendMessageToScreen(200, "Switch at ID: "
-                                                + (((TextView) nestAdapter.getViewByPosition(position2, R.id.id4)).getText())
+                                                + (((TextView) nestAdapter.getViewByPosition(position2, R.id.id_nestSelector_item)).getText())
                                                 + ", with Value: "
-                                                + (((TextView) nestAdapter.getViewByPosition(position2, R.id.name4)).getText())
+                                                + (((TextView) nestAdapter.getViewByPosition(position2, R.id.name_nestSelector_item)).getText())
                                                 + ", tried to be switched at position: " + String.valueOf(position2)
                                                 + ", but one option must be chosen.");
                                     }
                                 };
                                 recyclerView.setAdapter(nestAdapter);
-                                adapter.getViewByPosition(position, R.id.progressBar5).setVisibility(View.GONE);
+                                adapter.getViewByPosition(position, R.id.progressBar_selector_item).setVisibility(View.GONE);
 
                                 nestAdapter.bindToRecyclerView(recyclerView);
                                 nestAdapter.setOnItemChildClickListener((adapter2, view2, position2) -> {
                                     switch (view2.getId()) {
-                                        case R.id.name4:
+                                        case R.id.name_nestSelector_item:
                                             view2.startAnimation(ExtendApplication.getAnimFadein());
                                             sendMessageToScreen(200, "Item " + ((TextView) view2).getText()
                                                     + ", has clicked at position: " + String.valueOf(position2));
                                             break;
-                                        case R.id.id4:
+                                        case R.id.id_nestSelector_item:
                                             view2.startAnimation(ExtendApplication.getAnimFadein());
                                             sendMessageToScreen(200, "Item \"ID\" " + ((TextView) view2).getText()
                                                     + ", has clicked at position: " + String.valueOf(position2));
@@ -159,9 +159,9 @@ public class TopLevelPresenter extends BasePresenter<TopLevelView> {
                             } else {
                                 item = new EntityDataText(
                                         data.getData().getText());
-                                adapter.getViewByPosition(position, R.id.textData3).setVisibility(View.VISIBLE);
-                                ((TextView) adapter.getViewByPosition(position, R.id.textData3)).setText(((EntityDataText) item).dataText);
-                                adapter.getViewByPosition(position, R.id.progressBar3).setVisibility(View.GONE);
+                                adapter.getViewByPosition(position, R.id.textData_HZ_item).setVisibility(View.VISIBLE);
+                                ((TextView) adapter.getViewByPosition(position, R.id.textData_HZ_item)).setText(((EntityDataText) item).dataText);
+                                adapter.getViewByPosition(position, R.id.progressBar_HZ_item).setVisibility(View.GONE);
                             }
                             break;
                         }
